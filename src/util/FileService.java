@@ -2,13 +2,13 @@ package util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import exception.CustomException;
 import model.Data;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class FileService implements DataBase{
@@ -30,18 +30,28 @@ public class FileService implements DataBase{
     }
 
     public void action(Data[] data){
-        data = getData();
 
         int choice = choice("1 - Выбрать даннные по индексу;\n" +
-                "2 - ;\n" +
-                "3 - ;\n" +
+                "2 - Выбрать данные по ключу;\n" +
+                "3 - Добавить новые данные;\n" +
                 "4 - ;\n" +
                 "5 - ;\n" +
-                "6 - ;" + NEW_LINE);
+                "6 - Закрыть соединение;" + NEW_LINE);
         switch (choice){
             case 1:
-                readDataByIndex();
+                readDataByIndex(data);
                 break;
+            case 2:
+                checkDataByKey(data);
+                break;
+            case 3:
+                addEntryToBase(data.length,data);
+            case 6:
+                closeConnection();
+                break;
+            default:
+                print("Данное дейстиве недоступно.\n");
+                action(data);
         }
     }
     private int choice(String message) {
@@ -57,14 +67,26 @@ public class FileService implements DataBase{
 
     }
 
+    private String choiceKey(String message) {
+        print(message);
+        Scanner scanner = new Scanner(System.in);
+        try {
+            String answer = scanner.nextLine();
+            return answer;
+        }catch (Exception e){
+
+            return choiceKey("Такого элемента нет\nПопробуйте еще раз\n");
+        }
+
+    }
+
 
     //    Методы
     private void print(String message) {
         System.out.print(message);
     }
 
-    public void printData(){
-        Data[] data = getData();
+    public void printData(Data[] data ){
         StringBuilder sb = new StringBuilder(HEADER).append(NEW_LINE);
         for (int i = 0; i < data.length; i++) {
             sb.append(String.format(LINE, data[i].getKey(), data[i].getValue()));
@@ -80,7 +102,7 @@ public class FileService implements DataBase{
         int connection = r.nextInt(100)+1;
         if (connection > 10){
             System.out.println("Подключение прошло успешно");
-            printData();
+            printData(getData());
             action(getData());
         }else {
             System.out.println("Не удалось подключится к серверу");
@@ -89,7 +111,7 @@ public class FileService implements DataBase{
 
     @Override
     public void closeConnection() {
-
+        print("Отключение от сети.....");
     }
 
     @Override
@@ -98,8 +120,7 @@ public class FileService implements DataBase{
     }
 
     @Override
-    public void readDataByIndex()  {
-        Data[] data = getData();
+    public void readDataByIndex(Data[] data)  {
         try {
             int choice = choice("Укажите индекс\n");
             StringBuilder sb = new StringBuilder(String.format(LINE,data[choice-1].getKey(),data[choice-1].getValue())).append(NEW_LINE);
@@ -107,7 +128,7 @@ public class FileService implements DataBase{
             action(data);
         }catch (Exception e){
             print("Такого элемента нет");
-            readDataByIndex();
+            readDataByIndex(data);
         }
 
     }
@@ -118,8 +139,16 @@ public class FileService implements DataBase{
     }
 
     @Override
-    public void checkDataByKey() {
+    public void checkDataByKey(Data [] data) {
 
+        String key = choiceKey("Введите ключ\n");
+        for (int i = 0; i < data.length; i++) {
+            if (Objects.equals(key, data[i].getKey())){
+                StringBuilder sb = new StringBuilder(String.format(LINE,data[i].getKey(),data[i].getValue())).append(NEW_LINE);
+                print(sb+NEW_LINE);
+            }
+        }
+        action(data);
     }
 
     @Override
@@ -133,8 +162,21 @@ public class FileService implements DataBase{
     }
 
     @Override
-    public void addEntryToBase() {
+    public void addEntryToBase(int n, Data[] data) {
+        Data [] newData = new Data[n+1];
+        Data x = new Data();
+        for (int i = 0; i < n; i++) {
+            newData[i]=data[i];
 
+        }
+        String key = choiceKey("Введите новый ключ\n");
+        String value = choiceKey("Введите новое значение\n");
+        x.setKey(key);
+        x.setValue(value);
+        newData[n]=x;
+
+        printData(newData);
+        action(newData);
     }
 
     @Override

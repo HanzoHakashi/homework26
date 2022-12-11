@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afbc6034-96b5-45fd-8aef-77ded0923a7a" name="Changes" comment="created DataBase interface, adds methods in it. &#10;created data.json">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/FileService.java" afterDir="false" />
+    <list default="true" id="afbc6034-96b5-45fd-8aef-77ded0923a7a" name="Changes" comment="refactor Data class, created FileService class and begin to make this work and add some logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homework26.iml" beforeDir="false" afterPath="$PROJECT_DIR$/homework26.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/FileService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670772997095</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor Data class, created FileService class and begin to make this work and add some logic">
+      <created>1670779628316</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670779628316</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,7 +133,8 @@
     <MESSAGE value="created project homework26" />
     <MESSAGE value="created Data class. Add patterns key,value. Create 4 methods:writeKey,writeValue, read, print" />
     <MESSAGE value="created DataBase interface, adds methods in it. &#10;created data.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="created DataBase interface, adds methods in it. &#10;created data.json" />
+    <MESSAGE value="refactor Data class, created FileService class and begin to make this work and add some logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor Data class, created FileService class and begin to make this work and add some logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -140,6 +142,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.nio.file.NoSuchFileException" package="java.nio.file" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
