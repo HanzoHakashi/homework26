@@ -1,5 +1,8 @@
+import util.FileService;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        FileService fileService = new FileService();
+        fileService.openConnection();
     }
 }
