@@ -34,9 +34,11 @@ public class FileService implements DataBase{
         int choice = choice("1 - Выбрать даннные по индексу;\n" +
                 "2 - Выбрать данные по ключу;\n" +
                 "3 - Добавить новые данные;\n" +
-                "4 - ;\n" +
-                "5 - ;\n" +
-                "6 - Закрыть соединение;" + NEW_LINE);
+                "4 - Проверить количество элементов в базе данных;\n" +
+                "5 - Изменить значение по индексу;\n" +
+                "6 - Отобразить полную информацию\n"+
+                "7 - Изменить значение по ключу\n"+
+                "8 - Закрыть соединение;" + NEW_LINE);
         switch (choice){
             case 1:
                 readDataByIndex(data);
@@ -46,12 +48,27 @@ public class FileService implements DataBase{
                 break;
             case 3:
                 addEntryToBase(data.length,data);
+                break;
+            case 4:
+                checkAmount(data);
+                break;
+            case 5:
+                uploadEntryByIndex(data);
+                break;
             case 6:
+                printData(data);
+                action(data);
+                break;
+            case 7:
+                uploadByKey(data);
+                break;
+            case 8:
                 closeConnection();
                 break;
             default:
                 print("Данное дейстиве недоступно.\n");
                 action(data);
+                break;
         }
     }
     private int choice(String message) {
@@ -139,15 +156,18 @@ public class FileService implements DataBase{
     }
 
     @Override
-    public void checkDataByKey(Data [] data) {
+    public void checkDataByKey(Data[] data) {
 
         String key = choiceKey("Введите ключ\n");
         for (int i = 0; i < data.length; i++) {
             if (Objects.equals(key, data[i].getKey())){
                 StringBuilder sb = new StringBuilder(String.format(LINE,data[i].getKey(),data[i].getValue())).append(NEW_LINE);
                 print(sb+NEW_LINE);
+                action(data);
+                break;
             }
         }
+        print("Такого ключа нет\n");
         action(data);
     }
 
@@ -157,8 +177,10 @@ public class FileService implements DataBase{
     }
 
     @Override
-    public void checkAmount() {
-
+    public void checkAmount(Data[] data) {
+        int x = data.length;
+        System.out.printf("Количество элементов в базе данных %s%n",x);
+        action(data);
     }
 
     @Override
@@ -180,12 +202,41 @@ public class FileService implements DataBase{
     }
 
     @Override
-    public void uploadEntryByIndex() {
+    public void uploadEntryByIndex(Data[] data) {
+        int choice = choice("Введите индекс, для изменения информации\n");
+        try {
+            StringBuilder sb = new StringBuilder(String.format(LINE,data[choice-1].getKey(),data[choice-1].getValue())).append(NEW_LINE);
+            print(sb+NEW_LINE);
+            data[choice-1].setKey(choiceKey("Измените ключ\n"));
+            data[choice-1].setValue(choiceKey("Измените содержимое\n"));
+            StringBuilder sb1 = new StringBuilder(String.format(LINE,data[choice-1].getKey(),data[choice-1].getValue())).append(NEW_LINE);
+            print(sb1+NEW_LINE);
+            action(data);
+        } catch (Exception e){
+            print("Такого индекса нет\nВведите индекс еще раз\n");
+            uploadEntryByIndex(data);
+        }
 
     }
 
     @Override
-    public void uploadByKey() {
-
+    public void uploadByKey(Data[] data) {
+        String choice = choiceKey("Введите ключ для изменения данных");
+        for (int i = 0; i < data.length; i++) {
+            if (Objects.equals(choice, data[i].getKey())){
+                StringBuilder sb = new StringBuilder(String.format(LINE,data[i].getKey(),data[i].getValue())).append(NEW_LINE);
+                print(sb+NEW_LINE);
+                data[i].setKey(choiceKey("Измените ключ\n"));
+                data[i].setValue(choiceKey("Измените содержимое\n"));
+                StringBuilder sb1 = new StringBuilder(String.format(LINE,data[i].getKey(),data[i].getValue())).append(NEW_LINE);
+                print(sb1+NEW_LINE);
+                action(data);
+                break;
+            }
+        }
+        print("Такого ключа нет\n");
+        action(data);
     }
+
 }
+

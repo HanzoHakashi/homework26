@@ -14,10 +14,13 @@ public interface DataBase {
     void checkDataByKey(Data[] data);
 
     void readData();
-    void checkAmount();
+
+    void checkAmount(Data[] data);
 
     void addEntryToBase(int n, Data[] data);
 
-    void uploadEntryByIndex();
-    void uploadByKey();
+
+    void uploadEntryByIndex(Data[] data);
+
+    void uploadByKey(Data[] data);
 }

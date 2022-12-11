@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afbc6034-96b5-45fd-8aef-77ded0923a7a" name="Changes" comment="refactor Data class, created FileService class and begin to make this work and add some logic">
+    <list default="true" id="afbc6034-96b5-45fd-8aef-77ded0923a7a" name="Changes" comment="Change some methods in DataBase. Write logic in openConnection,addEntryToBase,checkDataByKey,readDataByIndex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/FileService.java" afterDir="false" />
     </list>
@@ -31,17 +32,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/User/Downloads/gson-2.8.9.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Downloads/gson-2.8.9.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\java mounth3\homework26\homework26\data" />
@@ -103,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670779628316</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Change some methods in DataBase. Write logic in openConnection,addEntryToBase,checkDataByKey,readDataByIndex">
+      <created>1670791169374</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670791169374</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,7 +142,8 @@
     <MESSAGE value="created Data class. Add patterns key,value. Create 4 methods:writeKey,writeValue, read, print" />
     <MESSAGE value="created DataBase interface, adds methods in it. &#10;created data.json" />
     <MESSAGE value="refactor Data class, created FileService class and begin to make this work and add some logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor Data class, created FileService class and begin to make this work and add some logic" />
+    <MESSAGE value="Change some methods in DataBase. Write logic in openConnection,addEntryToBase,checkDataByKey,readDataByIndex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change some methods in DataBase. Write logic in openConnection,addEntryToBase,checkDataByKey,readDataByIndex" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
